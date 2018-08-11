@@ -1,0 +1,19 @@
+{
+  "name": "sagio",
+  "version": "1.0.0",
+  "description": "Desktop application to edit the tags of audio files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Georgge/sag-io.git"
+  },
+  "author": "Georgge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Georgge/sag-io/issues"
+  },
+  "homepage": "https://github.com/Georgge/sag-io#readme"
+}
