@@ -99,7 +99,7 @@ typings/
 !.vscode/extensions.json
 
 ### Electron ###
-.src/temp/
+src/temp/
 
 
 # End of https://www.gitignore.io/api/node,linux,visualstudiocode
