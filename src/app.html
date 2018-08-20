@@ -17,18 +17,21 @@
       </div>
     </div>
     <div class="files-screen  full__screen not__visible">
-      <div class="track-container">
-        <div class="disc--cover">
-          <div class="disc--cover__icon"></div>
+      <template id="track-template">
+        <div class="track-container">
+          <div class="disc--cover">
+            <div class="disc--cover__icon"></div>
+          </div>
+          <div class="disc--cover-tag">Song name</div>
+          <div class="disc--cover-tag">Song album</div>
         </div>
-        <div class="disc--cover-tag">Song name</div>
-        <div class="disc--cover-tag">Song album</div>
-      </div>
-      <div class="folder-container">
-        <div class="folder--icon"></div>
-        <div class="folder--icon-tag">Some path ...</div>
-        <div class="folder--icon-tag"></div>
-      </div>
+      </template>
+      <template id="folder-template">
+        <div class="folder-container">
+          <div class="folder--icon"></div>
+          <div class="folder--icon-tag">Some path ...</div>
+        </div>
+      </template>
     </div>
   </div>
 </body>
