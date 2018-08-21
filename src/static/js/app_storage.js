@@ -2,7 +2,8 @@ import Loki from 'lokijs';
 import { LocalStorage } from 'node-localstorage';
 import fs from 'fs';
 import uniqid from 'uniqid';
-import { renderFolderTemplate } from './renders/render';
+import { renderFolderTemplate, renderTrackTemplate } from './renders/render';
+import { readId3Tags } from './id3_interaction';
 
 
 // global variables
@@ -23,7 +24,20 @@ const getContent = (pathValue) => {
           return console.log(err);
         }
         if (stats.isFile()) {
-          console.log(`file: ${stats.isFile()}`);
+          const tagRsponse = readId3Tags(fullPath);
+          const fileData = {
+            tid: uniqid(),
+            name: file, // file name not metadata name
+            title: tagRsponse.title,
+            type: 'file',
+            full_path: fullPath,
+            artist: tagRsponse.artist || tagRsponse.raw.TPE1,
+          };
+
+          console.log(tagRsponse);
+
+          item.insert(fileData);
+          renderTrackTemplate(fileData);
         } else if (stats.isDirectory()) {
           const directoryData = {
             did: uniqid(),
@@ -36,9 +50,7 @@ const getContent = (pathValue) => {
           renderFolderTemplate(directoryData);
         }
       });
-      console.log(file);
     });
-    console.log(files);
   });
 };
 
@@ -58,7 +70,7 @@ export const getParentPath = () => {
   return (null);
 };
 
-const setParentPath = (value) => {
+export const setParentPath = (value) => {
   localStorage.setItem('parent_path', value);
   const parentPath = getParentPath();
   return (parentPath);

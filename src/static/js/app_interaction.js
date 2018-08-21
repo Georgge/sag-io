@@ -1,5 +1,5 @@
 import { remote } from 'electron';
-import { getParentPath } from './app_storage';
+import { getParentPath, setParentPath } from './app_storage';
 
 const resolution = getParentPath();
 console.log(resolution);

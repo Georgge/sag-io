@@ -9,3 +9,20 @@ export const renderFolderTemplate = (directoryData) => {
   const clone = document.importNode(folderTemplate.content, true);
   filesScreen.appendChild(clone);
 };
+
+export const renderTrackTemplate = (fileData) => {
+  const filesScreen = document.querySelector('.files-screen');
+  const trackTemplate = document.querySelector('#track-template');
+  const trackContainer = trackTemplate.content.querySelector('.track-container');
+  const labels = trackTemplate.content.querySelectorAll('.disc--cover-tag');
+  trackContainer.id = fileData.tid;
+
+  if (fileData.title) { labels[0].textContent = fileData.title; }
+  else { labels[0].textContent = fileData.name; }
+
+  if (fileData.artist) { labels[1].textContent = fileData.artist; }
+  else { labels[0].textContent = ''; }
+
+  const clone = document.importNode(trackTemplate.content, true);
+  filesScreen.appendChild(clone);
+};
