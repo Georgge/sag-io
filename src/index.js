@@ -3,7 +3,14 @@ const { app, BrowserWindow } = require('electron');
 let win;
 
 function createWindow() {
-  win = new BrowserWindow();
+  const windowOptions = {
+    width: 1080,
+    minWidth: 680,
+    height: 680,
+    title: app.getName(),
+  };
+
+  win = new BrowserWindow(windowOptions);
   win.loadFile('./src/app.html');
   // win.webContents.openDevTools();
   win.on('closed', () => {

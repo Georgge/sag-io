@@ -1,7 +1,9 @@
-const Loki = require('lokijs');
-const { LocalStorage } = require('node-localstorage');
-const fs = require('fs');
-const uniqid = require('uniqid');
+import Loki from 'lokijs';
+import { LocalStorage } from 'node-localstorage';
+import fs from 'fs';
+import uniqid from 'uniqid';
+import { renderFolderTemplate } from './renders/render';
+
 
 // global variables
 const localStorage = new LocalStorage('./src/temp/scratch');
@@ -41,7 +43,7 @@ const getContent = (pathValue) => {
 };
 
 
-const getParentPath = () => {
+export const getParentPath = () => {
   const parentPath = localStorage.getItem('parent_path');
   const initialScreen = document.querySelector('.initial-screen');
   const filesScreen = document.querySelector('.files-screen');
