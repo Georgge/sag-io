@@ -99,7 +99,16 @@ typings/
 !.vscode/extensions.json
 
 ### Electron ###
+
+#directories
+bower_components
+node_modules
+dist
 src/temp/
+
+#files
+*.tgz
+*.log
 
 
 # End of https://www.gitignore.io/api/node,linux,visualstudiocode
