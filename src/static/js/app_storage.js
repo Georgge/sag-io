@@ -13,10 +13,12 @@ const item = db.addCollection('files');
 
 const getContent = (pathValue) => {
   const parentPath = pathValue;
+  const activityIndicator = document.querySelector('.files-editor');
   fs.readdir(parentPath, (err, files) => {
     if (err) {
       return console.log(`Unable to scan directory: ${err}`);
     }
+    console.log(files.length);
     files.forEach((file) => {
       const fullPath = `${parentPath}/${file}`;
       fs.lstat(fullPath, (err, stats) => {
@@ -37,7 +39,7 @@ const getContent = (pathValue) => {
           };
 
           item.insert(fileData);
-          renderTrackTemplate(fileData);
+          renderTrackTemplate(fileData, files.length);
         } else if (stats.isDirectory()) {
           const directoryData = {
             did: uniqid(),
@@ -46,13 +48,12 @@ const getContent = (pathValue) => {
             full_path: fullPath,
           };
           item.insert(directoryData);
-          renderFolderTemplate(directoryData);
+          renderFolderTemplate(directoryData, files.length);
         }
       });
     });
   });
 };
-
 
 export const getParentPath = () => {
   const parentPath = localStorage.getItem('parent_path');
@@ -66,7 +67,7 @@ export const getParentPath = () => {
     return (parentPath);
   }
 
-  return (null);
+  return false;
 };
 
 export const setParentPath = (value) => {

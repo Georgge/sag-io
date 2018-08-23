@@ -10,6 +10,12 @@
 </head>
 <body class="wrapper-container">
   <div class="wrapper">
+    <div class="activity-spinner">
+      <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+      </div>
+    </div>
     <div class="initial-screen  full__screen">
       <div class="icon-button" id="button-folder">
         <span class="load-folder-button"></span>
@@ -24,7 +30,7 @@
             <img src="" alt="" class="disc--cover__image">
           </div>
           <div class="disc--cover-tag">Song name</div>
-          <div class="disc--cover-tag">Song album</div>
+          <div class="disc--cover-tag">Song artist</div>
         </div>
       </template>
       <template id="folder-template">
@@ -34,14 +40,14 @@
         </div>
       </template>
       <div class="files-container"></div>
-      <div class="files-editor">
+      <div class="files-editor  not__visible">
         <div class="track-container">
           <div class="disc--cover">
             <div class="disc--cover__icon"></div>
-            <img src="" alt="" class="disc--cover__image">
+            <img src="" alt="" class="disc--cover__image not__visible">
           </div>
           <div class="disc--cover-tag">Song name</div>
-          <div class="disc--cover-tag">Song album</div>
+          <div class="disc--cover-tag">Song artist</div>
         </div>
       </div>
     </div>

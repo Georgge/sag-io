@@ -1,4 +1,22 @@
-export const renderFolderTemplate = (directoryData) => {
+let counter = 0;
+let totalElement = 0;
+export const spinner = document.querySelector('.activity-spinner');
+export const editor = document.querySelector('.files-editor');
+
+export const documentCheck = (total) => {
+  totalElement = total;
+  counter += 1;
+  spinner.classList.remove('not__visible');
+  if (counter === totalElement) {
+    spinner.classList.add('not__visible');
+    editor.classList.remove('not__visible');
+    counter = 0;
+    totalElement = 0;
+  }
+};
+
+export const renderFolderTemplate = (directoryData, elements) => {
+  window.onload = documentCheck(elements);
   const filesScreen = document.querySelector('.files-screen');
   const folderTemplate = document.querySelector('#folder-template');
   const folderContainer = folderTemplate.content.querySelector('.folder-container');
@@ -10,7 +28,8 @@ export const renderFolderTemplate = (directoryData) => {
   filesScreen.appendChild(clone);
 };
 
-export const renderTrackTemplate = (fileData) => {
+export const renderTrackTemplate = (fileData, elements) => {
+  window.onload = documentCheck(elements);
   const filesScreen = document.querySelector('.files-container');
   const trackTemplate = document.querySelector('#track-template');
   const trackContainer = trackTemplate.content.querySelector('.track-container');
