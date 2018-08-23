@@ -1,4 +1,5 @@
-// variables
+//// variables
+// colors
 $white = #f8f8f8
 $raisinBlack = #262322
 $gargoyleGas = #fde74c
@@ -6,12 +7,17 @@ $androidGreen = #9bc53d
 $flame = #e55934
 $princetonOrange = #fa7921
 
+// measurements
+$padding = 10px // just for general padding
+$fileEditorWidth = 264px
+
 html
 body
 h1
   margin: 0
 body
   font-family: 'Lato', sans-serif
+  background: $raisinBlack
 
 .wrapper-container
   max-width: 100vw
@@ -20,7 +26,7 @@ body
 .wrapper
   width: 100%
   min-height: 100vh
-  padding: 10px
+  padding: $padding
   box-sizing: border-box
   background: $raisinBlack
 
@@ -40,6 +46,23 @@ body
   justify-content: center
   align-items: center
   flex-wrap: wrap
+
+.files-editor
+  width: $fileEditorWidth
+  height: 100vh
+  position: fixed
+  right: 0
+  top: 0
+  border-left: 4px solid $flame
+  box-shadow: 4px 0 40px #000000
+
+.files-container
+  width: 100%
+  min-height: 100%
+  margin-right: $fileEditorWidth
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-around
 
 
 
@@ -90,11 +113,17 @@ body
     height: 130px
     background-image: url('../../icons/compact-disc.png')
     background-size: contain
+  &__image
+    width: 100%
+    height: 100%
+    border-radius: 4px
   &-tag
-    color: $white
+    color: $androidGreen
     font-size: 0.85rem
     padding: 2px 0px 2px 0px
     box-sizing: border-box
+    &:last-child
+      color: $princetonOrange
 
 .folder--icon
   width: 100%

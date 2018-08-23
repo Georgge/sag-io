@@ -24,17 +24,17 @@ const getContent = (pathValue) => {
           return console.log(err);
         }
         if (stats.isFile()) {
-          const tagRsponse = readId3Tags(fullPath);
+          const tagResponse = readId3Tags(fullPath);
           const fileData = {
             tid: uniqid(),
             name: file, // file name not metadata name
-            title: tagRsponse.title,
+            title: tagResponse.title || tagResponse.raw.TIT2,
             type: 'file',
             full_path: fullPath,
-            artist: tagRsponse.artist || tagRsponse.raw.TPE1,
+            artist: tagResponse.artist || tagResponse.raw.TPE1,
+            image: tagResponse.image || false,
+            id3: tagResponse || false,
           };
-
-          console.log(tagRsponse);
 
           item.insert(fileData);
           renderTrackTemplate(fileData);
@@ -45,7 +45,6 @@ const getContent = (pathValue) => {
             type: 'directory',
             full_path: fullPath,
           };
-
           item.insert(directoryData);
           renderFolderTemplate(directoryData);
         }
