@@ -8,6 +8,8 @@
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-scripts": "2.1.1",
+    "readdir": "^0.1.0",
+    "uniqid": "^5.0.3",
     "wait-on": "^3.2.0"
   },
   "scripts": {
