@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Main from './pages/Main';
+import LoadDirectory from './pages/LoadDirectory';
 import './App.css';
 
+const { dialog } = window.require('electron').remote;
+
 class App extends Component {
+  state = {
+    directoryIsLoad: false,
+    directory: '',
+  }
+
+  openDialog = (e) => {
+    const directory = dialog.showOpenDialog({ 
+      properties: ['openDirectory']
+    });
+    if (directory) {
+      localStorage.setItem('localDirectory', directory);
+      this.setState({
+        directoryIsLoad: true,
+        directory,
+      });
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {this.state.directoryIsLoad
+          ? <Main />
+          : <LoadDirectory getDirectory={this.openDialog} />
+        }
       </div>
     );
   }
