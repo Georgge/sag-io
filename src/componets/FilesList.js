@@ -44,30 +44,10 @@ export default class FileList extends PureComponent {
   }
 
   render() {
-    const { isLoading, baseFiles } = this.state;
-    const { spinnerS, spinnerF} = this.props.spinner;
     console.log(this.state.baseFiles.length);
     return (
-      <div className={spinnerS ? "spinner-container" : "files-container"}>
-        {spinnerS ? <div className="spinner"></div> : <p>Songs</p>}
-        {isLoading
-          ? <div>{(
-              baseFiles.map(file => {
-                const id = uniqid('sagio-');
-                console.log(file);
-                return (
-                  <div key={id} className="mini-cover">
-                    <MiniCover
-                      file={file}
-                      id={id}
-                      getTags={this.getTags}
-                    />
-                  </div>
-                )
-              }) this.state.baseFiles;
-            )}</div>
-          : <p>end</p>
-        }
+      <div className="files-container">
+        
       </div>
     );
   }
