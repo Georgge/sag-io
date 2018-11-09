@@ -1,0 +1,31 @@
+@import './spinner'
+
+.files-container
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+.mini-cover
+  width: 128px
+  max-width: 128px
+  height: 128px
+  max-height: 128px
+  background-color: #ff00cc
+  border-radius: 3px
+  margin: 8px
+
+  &--image
+    width: 128px
+    height: 128px
+
+.spinner-container
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  display: flex
+  justify-content: center
+  align-items: center
+.spinner
+  spinner()
