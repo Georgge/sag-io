@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import FileList from '../componets/FilesList';
+import '../assets/css/sagio.css';
 
 export default class Main extends Component {
   render() {

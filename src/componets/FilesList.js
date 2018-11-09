@@ -1,4 +1,5 @@
 import React, { Component, PureComponent } from 'react';
+import { List } from 'react-virtualized';
 import MiniCover from './MiniCover';
 
 const NodeID3 = window.require('node-id3');
@@ -19,13 +20,10 @@ export default class FileList extends PureComponent {
   getFiles = () => {
     const directoryPath = localStorage.getItem('localDirectory');
     const content = raedDir.readSync(directoryPath);
-    if (!this.state.isLoading) {
-      this.setState({
-        baseFiles: content,
-        isLoading: true,
-      })
-    }
-    return content
+    this.setState({
+      baseFiles: content,
+      isLoading: true,
+    })
   }
 
   getTags = (id, file) => {
@@ -39,15 +37,31 @@ export default class FileList extends PureComponent {
     });
   }
 
+  rowRenderer = ({index, key, style}) => {
+    console.log(index);
+    return (
+      <div key={key} style={style} className="list-item">
+        {this.state.baseFiles[index]}
+      </div>
+    )
+  }
+
   componentDidMount () {
-    this.getFiles();
+    if (this.state.baseFiles.length === 0)
+      this.getFiles();
   }
 
   render() {
     console.log(this.state.baseFiles.length);
     return (
       <div className="files-container">
-        
+        <List
+          width={776}
+          height={384}
+          rowCount={this.state.baseFiles.length}
+          rowHeight={20}
+          rowRenderer={this.rowRenderer}
+          />
       </div>
     );
   }
