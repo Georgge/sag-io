@@ -1,6 +1,6 @@
 import React, { Component, PureComponent } from 'react';
 import { List } from 'react-virtualized';
-import MiniCover from './MiniCover';
+import { MiniCover } from './MiniCover';
 
 const NodeID3 = window.require('node-id3');
 const uniqid = require('uniqid');
@@ -37,15 +37,6 @@ export default class FileList extends PureComponent {
     });
   }
 
-  rowRenderer = ({index, key, style}) => {
-    console.log(index);
-    return (
-      <div key={key} style={style} className="list-item">
-        {this.state.baseFiles[index]}
-      </div>
-    )
-  }
-
   componentDidMount () {
     if (this.state.baseFiles.length === 0)
       this.getFiles();
@@ -59,10 +50,9 @@ export default class FileList extends PureComponent {
           const id = uniqid()
             return (
               <div className="mini-cover" key={id}>
-                <MiniCover
-                file={file}
-                id={id}
-                getTags={this.getTags} />
+                <MiniCover>
+                  {file}
+                </MiniCover>
               </div>
             )
           }) 

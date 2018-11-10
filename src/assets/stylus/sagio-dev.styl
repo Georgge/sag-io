@@ -2,9 +2,11 @@
 
 /* --- Variables --- */
 $lateralPanelWidth = 249px
+$colorWhite = #e3e3e3
+$colorGrey = #5d5d5d
+$colorBG = #070607
 
 .main
-  width: 100vw
   height: 100vh
   padding-left: $lateralPanelWidth
   box-sizing: border-box
@@ -14,23 +16,54 @@ $lateralPanelWidth = 249px
   flex-wrap: wrap
   justify-content: space-between
   box-sizing: border-box
-  max-width: 776px
   min-width: 776px
+  background-color: $colorBG
+  padding: 20px
 
 .cover
   height: 397px
-  width: 776px
   background-color: #440045
 
 .mini-cover
   width: 128px
-  height: 128px
-  background-color: #ff00cc
+  height: 188px
   margin: 8px
 
   &--image
+    background-color: #ff00cc
     width: 128px
     height: 128px
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 3px
+    cursor: pointer
+    
+    &__with
+      width: 128px
+      height: 128px
+      border-radius: 3px
+    &__without
+      width: 96px
+      height: 96px
+      background-image: url('../icons/cover-whitout-dic.png')
+      background-position: center
+      background-size: cover
+
+  &--tags
+    width: 128px
+    height: auto
+    padding-top: 4px
+    padding-bottom: 4px
+    box-sizing: border-box
+    font-size: 0.7rem
+    > p
+      margin-top: 4px
+      margin-bottom: 4px
+      color: $colorWhite
+
+      &:last-child
+        color: $colorGrey
 
 .lateralPanel
   width: $lateralPanelWidth
