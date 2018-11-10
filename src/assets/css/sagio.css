@@ -65,7 +65,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
   box-sizing: border-box;
-  min-width: 776px;
   background-color: #070607;
   padding: 20px;
 }
@@ -76,7 +75,7 @@
 .mini-cover {
   width: 128px;
   height: 188px;
-  margin: 8px;
+  margin: 4px;
 }
 .mini-cover--image {
   background-color: #f0c;
@@ -107,6 +106,7 @@
   padding-bottom: 4px;
   box-sizing: border-box;
   font-size: 0.7rem;
+  text-align: left;
 }
 .mini-cover--tags > p {
   margin-top: 4px;

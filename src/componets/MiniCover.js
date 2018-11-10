@@ -13,7 +13,40 @@ const imageRender = (metadata, title) => {
       src={`data:${imageData.format};base64, ${bufferTo64}`}
       alt={title}/>
   );
-}
+};
+
+const tagsRender = (metadata, file) => {
+  const { title = false, artist = false } = metadata;
+  if (title && artist) {
+    return (
+      <div className="mini-cover--tags">
+        <p>{title}</p>
+        <p>{artist}</p>
+      </div>
+    );
+  } else if (title && !artist) {
+    return (
+      <div className="mini-cover--tags">
+        <p>{title}</p>
+        <p></p>
+      </div>
+    );
+  } else if (!title && artist) {
+    return (
+      <div className="mini-cover--tags">
+        <p>{file}</p>
+        <p>{artist}</p>
+      </div>
+    );
+  } else {
+    return (
+      <div className="mini-cover--tags">
+        <p>{file}</p>
+        <p></p>
+      </div>
+    );
+  }
+};
 
 export const MiniCover = ({children}) => {
   const file = children;
@@ -29,10 +62,7 @@ export const MiniCover = ({children}) => {
           }
           <div></div>
         </div>
-        <div className="mini-cover--tags">
-          <p>{data.common.title}</p>
-          <p>{data.common.artist}</p>
-        </div>
+        { tagsRender(data.common, file) }
       </div>} />
   );
 }

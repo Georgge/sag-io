@@ -1,5 +1,4 @@
 import React, { Component, PureComponent } from 'react';
-import { List } from 'react-virtualized';
 import { MiniCover } from './MiniCover';
 
 const NodeID3 = window.require('node-id3');
