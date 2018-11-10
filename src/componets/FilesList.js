@@ -52,16 +52,21 @@ export default class FileList extends PureComponent {
   }
 
   render() {
-    console.log(this.state.baseFiles.length);
+    const { baseFiles } = this.state;
     return (
       <div className="files-container">
-        <List
-          width={776}
-          height={384}
-          rowCount={this.state.baseFiles.length}
-          rowHeight={20}
-          rowRenderer={this.rowRenderer}
-          />
+        {baseFiles.map(file => {
+          const id = uniqid()
+            return (
+              <div className="mini-cover" key={id}>
+                <MiniCover
+                file={file}
+                id={id}
+                getTags={this.getTags} />
+              </div>
+            )
+          }) 
+        }
       </div>
     );
   }

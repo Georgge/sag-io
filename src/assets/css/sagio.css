@@ -54,19 +54,44 @@
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
 }
+/* --- Variables --- */
+.main {
+  width: 100vw;
+  height: 100vh;
+  padding-left: 249px;
+  box-sizing: border-box;
+}
 .files-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  box-sizing: border-box;
+  max-width: 776px;
+  min-width: 776px;
 }
-.list-item {
-  width: !important 100%;
-  border-top: 1px solid #f0c;
-  margin: 8px;
+.cover {
+  height: 397px;
+  width: 776px;
+  background-color: #440045;
 }
-.list-item--image {
+.mini-cover {
   width: 128px;
   height: 128px;
+  background-color: #f0c;
+  margin: 8px;
+}
+.mini-cover--image {
+  width: 128px;
+  height: 128px;
+}
+.lateralPanel {
+  width: 249px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #252222;
 }
 .spinner-container {
   position: absolute;
