@@ -12,7 +12,6 @@
     "react-promise": "^2.0.3",
     "react-scripts": "2.1.1",
     "readdir": "^0.1.0",
-    "scrollmagic": "^2.0.6",
     "uniqid": "^5.0.3",
     "wait-on": "^3.2.0"
   },
