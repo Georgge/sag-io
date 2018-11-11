@@ -67,6 +67,9 @@
   box-sizing: border-box;
   background-color: #070607;
   padding: 20px;
+  min-height: 369px;
+  height: 369px;
+  overflow-y: scroll;
 }
 .cover {
   height: 397px;
