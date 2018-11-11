@@ -1,7 +1,6 @@
 import React from 'react';
 import Async from 'react-promise';
 const mm = window.require('music-metadata');
-const util = require('util');
 
 const imageRender = (metadata, title) => {
   const imageData = metadata[0];

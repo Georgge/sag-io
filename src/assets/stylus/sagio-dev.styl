@@ -2,6 +2,7 @@
 
 /* --- Variables --- */
 $lateralPanelWidth = 249px
+$minicoverSize = 128px
 $colorWhite = #e3e3e3
 $colorGrey = #5d5d5d
 $colorBG = #070607
@@ -24,14 +25,14 @@ $colorBG = #070607
   background-color: #440045
 
 .mini-cover
-  width: 128px
+  width: $minicoverSize
   height: 188px
   margin: 4px
 
   &--image
     background-color: #ff00cc
-    width: 128px
-    height: 128px
+    width: $minicoverSize
+    height: $minicoverSize
     display: flex
     justify-content: center
     align-items: center
@@ -39,8 +40,8 @@ $colorBG = #070607
     cursor: pointer
     
     &__with
-      width: 128px
-      height: 128px
+      width: $minicoverSize
+      height: $minicoverSize
       border-radius: 3px
     &__without
       width: 96px
@@ -50,7 +51,7 @@ $colorBG = #070607
       background-size: cover
 
   &--tags
-    width: 128px
+    width: $minicoverSize
     height: auto
     padding-top: 4px
     padding-bottom: 4px
