@@ -3,8 +3,10 @@
 /* --- Variables --- */
 $lateralPanelWidth = 249px
 $minicoverSize = 128px
+$generalPadding = 20px
 $colorWhite = #e3e3e3
 $colorGrey = #5d5d5d
+$colorPink = #ff00cc
 $colorBG = #070607
 
 .main
@@ -12,20 +14,51 @@ $colorBG = #070607
   padding-left: $lateralPanelWidth
   box-sizing: border-box
 
+.cover-container
+  height: 397px
+  background-color: #440045
+  padding: $generalPadding
+  box-sizing: border-box
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+
+.cover
+  width: 50%
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-wrap: wrap
+
+  &--image
+    width: 348px
+    height: 348px
+    background-color: $colorPink
+    border-radius: 3px
+    display: flex
+    justify-content: center
+    align-items: center
+
+    &__without
+      width: 268px
+      height: 268px
+      background-image: url('../icons/cover-whitout-dic.png')
+      background-size: cover
+
+.cover-data
+    width: 50%
+    height: 348px
+
 .files-container
   display: flex
   flex-wrap: wrap
   justify-content: space-between
   box-sizing: border-box
   background-color: $colorBG
-  padding: 20px
+  padding: $generalPadding
   min-height: 369px
   height: 369px
   overflow-y: scroll
-
-.cover
-  height: 397px
-  background-color: #440045
 
 .mini-cover
   width: $minicoverSize
@@ -33,7 +66,7 @@ $colorBG = #070607
   margin: 4px
 
   &--image
-    background-color: #ff00cc
+    background-color: $colorPink
     width: $minicoverSize
     height: $minicoverSize
     display: flex
@@ -59,7 +92,7 @@ $colorBG = #070607
     padding-top: 4px
     padding-bottom: 4px
     box-sizing: border-box
-    font-size: 0.7rem
+    font-size: 0.75rem
     text-align: left 
     > p
       margin-top: 4px

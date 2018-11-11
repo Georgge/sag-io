@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { MiniCover } from './MiniCover';
 
 const NodeID3 = window.require('node-id3');
@@ -9,11 +9,6 @@ export default class FileList extends PureComponent {
   state = {
     isLoading: false,
     baseFiles: [],
-    files: {
-      id: {
-        tags: false,
-      }
-    }
   }
 
   getFiles = () => {
@@ -23,17 +18,6 @@ export default class FileList extends PureComponent {
       baseFiles: content,
       isLoading: true,
     })
-  }
-
-  getTags = (id, file) => {
-    const basePath = localStorage.getItem('localDirectory');
-    const tags = NodeID3.read(`${basePath}/${file}`);
-    return ({
-      [id]: {
-        title: tags.title || false,
-        image: tags.image || false,
-      }
-    });
   }
 
   componentDidMount () {
@@ -48,7 +32,9 @@ export default class FileList extends PureComponent {
         {baseFiles.map(file => {
           const id = uniqid()
             return (
-              <div className="mini-cover" key={id}>
+              <div className="mini-cover"
+                key={id}
+                onClick={() => this.props.handleCurrent(id)}>
                 <MiniCover>
                   {file}
                 </MiniCover>
