@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { MiniCover } from './MiniCover';
 
-const NodeID3 = window.require('node-id3');
+//const NodeID3 = window.require('node-id3');
 const uniqid = require('uniqid');
-const raedDir = window.require('readdir');
+const readDir = window.require('readdir');
 
 export default class FileList extends PureComponent {
   state = {
@@ -12,17 +12,17 @@ export default class FileList extends PureComponent {
   }
 
   getFiles = () => {
-    const directoryPath = localStorage.getItem('localDirectory');
-    const content = raedDir.readSync(directoryPath);
+    const directoryPath = this.props.directory;
+    const content = readDir.readSync(directoryPath);
     this.setState({
       baseFiles: content,
-      isLoading: true,
-    })
+    });
   }
 
   componentDidMount () {
-    if (this.state.baseFiles.length === 0)
+    if (this.state.baseFiles.length === 0) {
       this.getFiles();
+    }
   }
 
   render() {
@@ -35,9 +35,9 @@ export default class FileList extends PureComponent {
               <div className="mini-cover"
                 key={id}
                 onClick={() => this.props.handleCurrent(id)}>
-                <MiniCover>
-                  {file}
-                </MiniCover>
+                <MiniCover
+                  file={file}
+                  directory={this.props.directory} />
               </div>
             )
           }) 

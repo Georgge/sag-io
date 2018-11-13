@@ -19,7 +19,10 @@ export default class Main extends Component {
       <div className="main">
         <LateralPanel />
         <Cover current={fileKey} />
-        <FileList handleCurrent={this._handleCurrent} />
+        <FileList
+          sagioDB={this.props.sagioDB}
+          directory={this.props.directory}
+          handleCurrent={this._handleCurrent}/>
       </div>
     )
   }
