@@ -1,11 +1,13 @@
 import React from 'react';
 import Async from 'react-promise';
+import { MiniCoverImage, MiniCoverData } from './Metadata';
+import { CONSTANTS } from '../config/Constants';
 const mm = window.require('music-metadata');
 
 const saveInDB = (path, file, id, fileList) => {
   const { SagIoDB, total, spinner } = fileList;
   SagIoDB.update(
-    { _id: 'sagio-files' },
+    { _id: CONSTANTS.FILES_COLLECTION_ID },
     { $push:
       { files: {
           _id: id, path,
@@ -21,49 +23,17 @@ const saveInDB = (path, file, id, fileList) => {
   })
 }
 
-const imageRender = (metadata) => {
-  const imageData = metadata.picture[0];
-  const imageBuffer = imageData.data;
-  const bufferTo64 = new Buffer(imageBuffer.toString('base64'));
-  return (
-    <img
-      className="mini-cover--image__with"
-      src={`data:${imageData.format};base64, ${bufferTo64}`}
-      alt={metadata.title}/>
-  );
-};
-
 const tagsRender = (metadata, path, file, id, fileList) => {
   const { title = false, artist = false } = metadata.common;
   saveInDB(path, file, id, fileList);
   if (title && artist) {
-    return (
-      <div className="mini-cover--tags">
-        <p>{title}</p>
-        <p>{artist}</p>
-      </div>
-    );
+    return <MiniCoverData title={title} artist={artist} />
   } else if (title && !artist) {
-    return (
-      <div className="mini-cover--tags">
-        <p>{title}</p>
-        <p></p>
-      </div>
-    );
+    return <MiniCoverData title={title} />
   } else if (!title && artist) {
-    return (
-      <div className="mini-cover--tags">
-        <p>{file}</p>
-        <p>{artist}</p>
-      </div>
-    );
+    return <MiniCoverData title={file} artist={artist} />
   } else {
-    return (
-      <div className="mini-cover--tags">
-        <p>{file}</p>
-        <p></p>
-      </div>
-    );
+    return <MiniCoverData title={file} />
   }
 };
 
@@ -86,7 +56,7 @@ export const MiniCover = (props) => {
       then={data => <div>
         <div className="mini-cover--image">
           {data.common.picture
-            ? imageRender(data.common)
+            ? <MiniCoverImage metadata={data.common}/>
             : <div className="mini-cover--image__without"></div>
           }
           <div></div>
