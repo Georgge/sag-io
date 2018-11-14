@@ -105,6 +105,7 @@
   min-height: 369px;
   height: 369px;
   overflow-y: scroll;
+  position: relative;
 }
 .mini-cover {
   width: 128px;
@@ -159,6 +160,7 @@
   bottom: 0;
   background-color: #252222;
 }
+/* --- General classes --- */
 .spinner-container {
   position: absolute;
   top: 0;
@@ -168,12 +170,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(68,0,69,0.5);
 }
 .spinner {
-  width: 40px;
-  height: 40px;
-  background-color: #f0c;
+  width: 55px;
+  height: 55px;
+  background-color: #fff;
   margin: 100px auro;
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
   animation: sk-rotateplane 1.2s infinite ease-in-out;
+  position: relative;
+}
+.spinner:before {
+  content: 'SagIO';
+  font-size: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.not-visible {
+  display: none;
 }

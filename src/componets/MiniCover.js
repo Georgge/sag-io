@@ -2,6 +2,25 @@ import React from 'react';
 import Async from 'react-promise';
 const mm = window.require('music-metadata');
 
+const saveInDB = (path, file, id, fileList) => {
+  const { SagIoDB, total, spinner } = fileList;
+  SagIoDB.update(
+    { _id: 'sagio-files' },
+    { $push:
+      { files: {
+          _id: id, path,
+          file
+        }
+      }
+    },
+    { returnUpdatedDocs: true },
+    (error, numAffected, affectedDocuments, upsert) => {
+      if (total === affectedDocuments.files.length) {
+        spinner();
+      }
+  })
+}
+
 const imageRender = (metadata) => {
   const imageData = metadata.picture[0];
   const imageBuffer = imageData.data;
@@ -14,8 +33,9 @@ const imageRender = (metadata) => {
   );
 };
 
-const tagsRender = (metadata, file) => {
+const tagsRender = (metadata, path, file, id, fileList) => {
   const { title = false, artist = false } = metadata.common;
+  saveInDB(path, file, id, fileList);
   if (title && artist) {
     return (
       <div className="mini-cover--tags">
@@ -48,11 +68,21 @@ const tagsRender = (metadata, file) => {
 };
 
 export const MiniCover = (props) => {
-  console.log(props)
-  const file = `${props.directory}/${props.file}`;
+  const filePath = `${props.directory}/${props.file}`;
+  const { directory, id,
+    SagIoDB, file,
+    total, spinner
+  } = props;
+
+  const fileList = {
+    SagIoDB,
+    total,
+    spinner
+  }
+
   return (
     <Async
-      promise={mm.parseFile(file)}
+      promise={mm.parseFile(filePath)}
       then={data => <div>
         <div className="mini-cover--image">
           {data.common.picture
@@ -61,7 +91,7 @@ export const MiniCover = (props) => {
           }
           <div></div>
         </div>
-        { tagsRender(data, file) }
+        { tagsRender(data, directory, file, id, fileList) }
       </div>} />
   );
 }

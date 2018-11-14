@@ -59,6 +59,7 @@ $colorBG = #070607
   min-height: 369px
   height: 369px
   overflow-y: scroll
+  position: relative
 
 .mini-cover
   width: $minicoverSize
@@ -111,6 +112,7 @@ $colorBG = #070607
   bottom: 0
   background-color: #252222
 
+/* --- General classes --- */
 .spinner-container
   position: absolute
   top: 0
@@ -120,5 +122,10 @@ $colorBG = #070607
   display: flex
   justify-content: center
   align-items: center
+  background-color: rgba(68, 0, 69, 0.5)
+
 .spinner
   spinner()
+
+.not-visible
+  display: none

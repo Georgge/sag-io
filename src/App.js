@@ -1,61 +1,58 @@
 import React, { Component } from 'react';
-import PouchDB from 'pouchdb';
 import Main from './pages/Main';
 import LoadDirectory from './pages/LoadDirectory';
+import { CONSTANTS } from './config/Constants';
 import './App.css';
 
+const Datastore = window.require('nedb');
 const { dialog } = window.require('electron').remote;
-const dbName = 'sagio-test'
-const SagIoDB = new PouchDB(dbName);
+
+const SagIoDB = new Datastore({
+  filename: `./${CONSTANTS.DB_NAME}`,
+  autoload: true,
+});
+
 
 class App extends Component {
   state = {
-    directoryIsLoad: false,
     directory: '',
   }
 
   basicDirectories () {
-    const dir = {
+    SagIoDB.insert({
       _id: 'sagio-dir',
-      directory: false,
-    }
-    const fil = {
-      _id: 'sagio-fil',
-      files: {}
-    }
-
-    SagIoDB.put(dir);
-    SagIoDB.put(fil);
+      path: false,
+    })
+    SagIoDB.insert({
+      _id: 'sagio-files',
+      files: []
+    })
   }
 
-  getDirectory () {
-    SagIoDB.get('sagio-dir').then(doc => {
-      if (doc.directory) {
-        console.log(doc.directory)
-        this.setState({
-          directoryIsLoad: true,
-          directory: doc.directory,
-        });  
+  getDirectory = () => {
+    SagIoDB.update(
+      { _id: 'sagio-files' },
+      { files: [] },
+      { returnUpdatedDocs: true },
+      ( err, numAffected, affectedDocuments, upsert ) => {
+        console.log(affectedDocuments);
       }
-    })
+    );
+
+    SagIoDB.findOne({ _id: 'sagio-dir' }, (error, doc) => {
+      this.setState({ directory: doc.path })
+    });
   }
 
-  updateDirectory (newDirectory) {
-    console.log(newDirectory);
-    SagIoDB.get('sagio-dir')
-    .then(doc => {
-      doc.directory = newDirectory[0];
-      return SagIoDB.put(doc);
-    })
-    .then(() => {
-      return SagIoDB.get('sagio-dir');
-    })
-    .then(doc => {
-      console.log(doc);
-    })
-    .catch(error => {
-      console.log(error);
-    })
+  updateDirectory = (newDirectory) => {
+    SagIoDB.update(
+      { _id: 'sagio-dir' },
+      { path: newDirectory[0] },
+      { returnUpdatedDocs: true },
+      (error, numAffected, affectedDocuments, upsert) => {
+        this.getDirectory();
+      }
+    );
   }
 
   openDialog = (e) => {
@@ -64,29 +61,25 @@ class App extends Component {
     });
     if (directory) {
       this.updateDirectory(directory);
-      localStorage.setItem('localDirectory', directory);
-      this.getDirectory();
     }
   }
 
   componentDidMount () {
-    SagIoDB.info()
-      .then(response => {
-        if (response.doc_count === 0)
-          this.basicDirectories();
-        else
-          this.getDirectory()
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    SagIoDB.findOne({ _id: 'sagio-dir' }, (error, doc) => {
+      if (doc === null) {
+        this.basicDirectories();
+      } else {
+        if (doc.path !== false)
+          this.getDirectory();
+      }
+    });
   }
 
   render() {
     return (
       <div className="App">
-        {this.state.directoryIsLoad
-          ? <Main sagioDB={SagIoDB} directory={this.state.directory} />
+        {this.state.directory
+          ? <Main SagIoDB={SagIoDB} directory={this.state.directory} />
           : <LoadDirectory getDirectory={this.openDialog} />
         }
       </div>

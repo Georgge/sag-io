@@ -102,5 +102,5 @@ typings/
 !.vscode/launch.json
 !.vscode/extensions.json
 design/
-
+sandbox_1
 # End of https://www.gitignore.io/api/node,visualstudiocode,linux

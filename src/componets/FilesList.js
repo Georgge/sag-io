@@ -7,7 +7,6 @@ const readDir = window.require('readdir');
 
 export default class FileList extends PureComponent {
   state = {
-    isLoading: false,
     baseFiles: [],
   }
 
@@ -23,21 +22,27 @@ export default class FileList extends PureComponent {
     if (this.state.baseFiles.length === 0) {
       this.getFiles();
     }
+    this.props.spinner();
   }
 
   render() {
     const { baseFiles } = this.state;
     return (
       <div className="files-container">
-        {baseFiles.map(file => {
-          const id = uniqid()
+        {
+          baseFiles.map((file, index) => {            
+            const id = uniqid()
             return (
               <div className="mini-cover"
                 key={id}
                 onClick={() => this.props.handleCurrent(id)}>
                 <MiniCover
                   file={file}
-                  directory={this.props.directory} />
+                  directory={this.props.directory}
+                  id={id}
+                  SagIoDB={this.props.SagIoDB}
+                  spinner={this.props.spinner}
+                  total={baseFiles.length}/>
               </div>
             )
           }) 

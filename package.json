@@ -6,6 +6,7 @@
   "dependencies": {
     "electron-is-dev": "^1.0.1",
     "music-metadata": "^3.1.6",
+    "nedb": "^1.8.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-promise": "^2.0.3",
