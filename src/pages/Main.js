@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import Spinner from '../componets/Spinner';
 import FileList from '../componets/FilesList';
 import Cover from '../componets/Cover';
 import LateralPanel from '../componets/LateralPanel';
-import '../assets/css/sagio.css';
 
 export default class Main extends Component {
   state = {
@@ -23,21 +23,17 @@ export default class Main extends Component {
 
   render() {
     const fileKey = this.state.currentFile;
+    const spinnerState = this.state.spinner;
     return (
       <div className="main">
-        <div className={this.state.spinner
-          ? "spinner-container"
-          : "not-visible"}>
-          <div className="spinner"></div>
-        </div>
+        <Spinner spinnerState={spinnerState} />
         <LateralPanel />
         <Cover current={fileKey} />
         <FileList
           SagIoDB={this.props.SagIoDB}
           directory={this.props.directory}
           handleCurrent={this._handleCurrent}
-          spinner={this.spinner}
-          spinnerStatus={this.state.spinner}/>
+          spinner={this.spinner} />
       </div>
     )
   }

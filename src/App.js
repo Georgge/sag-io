@@ -3,6 +3,7 @@ import Main from './pages/Main';
 import LoadDirectory from './pages/LoadDirectory';
 import { CONSTANTS } from './config/Constants';
 import './App.css';
+import './assets/css/sagio.css'
 
 const Datastore = window.require('nedb');
 const { dialog } = window.require('electron').remote;

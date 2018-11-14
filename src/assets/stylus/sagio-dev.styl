@@ -7,6 +7,7 @@ $generalPadding = 20px
 $colorWhite = #e3e3e3
 $colorGrey = #5d5d5d
 $colorPink = #ff00cc
+$colorWine = #440045
 $colorBG = #070607
 
 .main
@@ -112,6 +113,29 @@ $colorBG = #070607
   bottom: 0
   background-color: #252222
 
+.load-container
+  background-color: $colorWine
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  display: flex
+  justify-content: center
+  align-items: center
+
+.load-button
+  width: 208px
+  height: 44px
+  font-size: 1.5rem
+  font-weight: bold
+  line-height: 44px
+  color: $colorWhite
+  background-color: $colorGrey
+  border-radius: 3px
+  box-shadow: 1px 1px 15px $colorBG
+  cursor: pointer
+
 /* --- General classes --- */
 .spinner-container
   position: absolute
@@ -123,6 +147,7 @@ $colorBG = #070607
   justify-content: center
   align-items: center
   background-color: rgba(68, 0, 69, 0.5)
+  z-index: 100
 
 .spinner
   spinner()
