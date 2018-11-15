@@ -2,24 +2,29 @@ import React from 'react';
 import Async from 'react-promise';
 import { MiniCoverImage, MiniCoverData } from './Metadata';
 import { CONSTANTS } from '../config/Constants';
+
 const mm = window.require('music-metadata');
 
 const saveInDB = (path, file, id, fileList) => {
   const { SagIoDB, total, spinner } = fileList;
   SagIoDB.update(
-    { _id: CONSTANTS.FILES_COLLECTION_ID },
-    { $push:
-      { files: {
-          _id: id, path,
-          file
+    { _id: CONSTANTS.FILES_COLLECTION_ID},
+    {$set:{
+        [id]: {
+          _id: id,
+          file,
+          path,
         }
       }
     },
     { returnUpdatedDocs: true },
     (error, numAffected, affectedDocuments, upsert) => {
-      if (total === affectedDocuments.files.length) {
+      /*if (total === affectedDocuments.files.length) {
         spinner();
-      }
+      }*/
+      const documentSize = Object.keys(affectedDocuments).length;
+      if((documentSize - 1) === total)
+        spinner();
   })
 }
 
