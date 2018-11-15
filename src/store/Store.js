@@ -5,6 +5,7 @@ export const createBasicCollections = () => {
   SagIoDB.findOne({ _id: CONSTANTS.DIRECTORY_COLLECTION_ID }, (error, doc) => {
     if (doc === null) {
       SagIoDB.insert({ _id: CONSTANTS.DIRECTORY_COLLECTION_ID, path: false });
+      SagIoDB.insert({ _id: CONSTANTS.FILES_COLLECTION_ID });
     }
   })
 }

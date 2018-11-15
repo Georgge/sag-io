@@ -22,3 +22,30 @@ export const MiniCoverData = (props) => {
     </div>
   );
 }
+
+const dataItem = (type, value) => {
+  return (
+    <div className="cover-data--item">
+      <div className="cover-data--icon">
+        <img src={`img/${type}-icon.png`} alt={value} />
+      </div>
+      <div className="cover-data--value">
+        {value}
+      </div>
+    </div>
+  );
+}
+
+export const CoverData = (props) => {
+  const { state } = props;
+  return (
+    <div>
+      {dataItem('title', state.title)}
+      {dataItem('artist', state.artist)}
+      {dataItem('album', state.album)}
+      {dataItem('year', state.year)}
+      {dataItem('genre', state.genre)}
+      {dataItem('comment', state.comment)}
+    </div>
+  );
+}

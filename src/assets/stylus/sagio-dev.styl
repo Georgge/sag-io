@@ -50,6 +50,35 @@ $colorBG = #070607
     width: 50%
     height: 348px
 
+    &--item
+      display: flex
+      flex-wrap: wrap
+      margin-bottom: 14px
+
+      &:last-child
+        margin-bottom: 0
+    
+    &--icon
+      width: 20px
+      height: 20px
+      padding-top: 4px
+      padding-bottom: 4px
+      padding-right: 10px
+      display: flex
+      justify-content: center
+      align-items: center
+      > img
+        width: 18px
+        height: 18px
+
+    &--value
+      height: 28px
+      line-height: 28px
+      padding-left: 10px
+      color: $colorWhite
+      font-size: 1.3rem
+
+
 .files-container
   display: flex
   flex-wrap: wrap

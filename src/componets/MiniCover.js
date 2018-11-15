@@ -19,12 +19,9 @@ const saveInDB = (path, file, id, fileList) => {
     },
     { returnUpdatedDocs: true },
     (error, numAffected, affectedDocuments, upsert) => {
-      /*if (total === affectedDocuments.files.length) {
-        spinner();
-      }*/
       const documentSize = Object.keys(affectedDocuments).length;
       if((documentSize - 1) === total)
-        spinner();
+          spinner();
   })
 }
 
