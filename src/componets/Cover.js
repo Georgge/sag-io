@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { SagIoDB } from '../store/Nedb';
-import { CoverData } from '../componets/Metadata';
+import { CoverData, CoverImage } from '../componets/Metadata';
 import { CONSTANTS } from '../config/Constants';
 
 const mm = window.require('music-metadata');
 
-export default class Cover extends Component {
+export default class Cover extends PureComponent {
   state = {
     currentKey: false,
     title: '',
@@ -24,40 +24,34 @@ export default class Cover extends Component {
         const { common } = metadata;
         const {
           title = data.file,
-          artist = '',
-          album = '',
-          year = '',
-          genre = '',
-          comment = '',
-          picture = false } = common;
+          artist = '', album = '',
+          year = '', genre = '',
+          comment = '', picture = false } = common;
         this.setState({
-          title,
-          artist,
-          album,
-          year,
-          genre,
-          comment,
-          picture,
-          currentKey: current
+          title, artist,
+          album, year,
+          genre, comment,
+          picture, currentKey: current
         });
       });
     })
   }
+
+  componentWillReceiveProps (props) {
+    if(props.current)
+      this.upData(props.current);
+  }
+
   render() {
-    const current = this.props.current;
     return (
       <div className="cover-container">
         <div className="cover">
           <div className="cover--image">
-            <div className="cover--image__without"></div>
+            <CoverImage picture={this.state.picture} />
           </div>
         </div>
         <div className="cover-data">
-          {current ? this.upData(current) : false }
-          {this.state.currentKey
-            ? <CoverData state={this.state} />
-            : <div>No data yet</div>
-          }
+          <CoverData state={this.state} />
         </div>
       </div>
     )

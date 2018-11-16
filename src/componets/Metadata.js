@@ -38,14 +38,36 @@ const dataItem = (type, value) => {
 
 export const CoverData = (props) => {
   const { state } = props;
-  return (
-    <div>
-      {dataItem('title', state.title)}
-      {dataItem('artist', state.artist)}
-      {dataItem('album', state.album)}
-      {dataItem('year', state.year)}
-      {dataItem('genre', state.genre)}
-      {dataItem('comment', state.comment)}
-    </div>
-  );
+  if (state.currentKey) {
+    return (
+      <div>
+        {dataItem('title', state.title)}
+        {dataItem('artist', state.artist)}
+        {dataItem('album', state.album)}
+        {dataItem('year', state.year)}
+        {dataItem('genre', state.genre)}
+        {dataItem('comment', state.comment)}
+      </div>
+    );
+  } else {
+    return <div className="cover-data__without">No data yet.</div>
+  }
+}
+
+export const CoverImage = (props) => {
+  const { picture } = props;
+  if (!picture) {
+    return <div className="cover--image__without"></div>
+  } else {
+    const metadata = picture[0];
+    const imageBuffer = metadata.data;
+    const { format } = metadata;
+    const bufferTo64 = new Buffer(imageBuffer.toString('base64'));
+    return (
+      <img
+        className="cover--image__with"
+        src={`data:${format};base64, ${bufferTo64}`}
+        alt={metadata.title}/>
+    );
+  }
 }
