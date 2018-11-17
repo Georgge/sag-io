@@ -39,8 +39,15 @@ export default class SoundPlayer extends PureComponent {
         <CurrentCoverData
           soundTitle={this.state.title}
           soundArtist={this.state.artist} />
-        <div className="controls-player">
-          controls
+        <div className="control-player">
+          <div className="control-player--timer">0:00</div>
+          <div className="control-player--central">
+            <div className="control-player--buttons">
+              <div className="control-player--play" id="ppp"></div>
+            </div>
+            <div className="siri-wave">SiriWave</div>
+          </div>
+          <div className="control-player--time">2:35</div>
         </div>
       </div>
     )

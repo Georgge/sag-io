@@ -1,5 +1,7 @@
+$playerHeight = 76px
+$coverWidth = ($playerHeight - 16px)
 sound-player()
-  height: 68px
+  height: 76px
   background-color: rgba(7, 6, 7, 0.85);
   position: absolute
   right: 0
@@ -18,8 +20,8 @@ sound-player()
 cover-player()
   background-color: $colorPink
   height: 100%
-  width: 52px
-  min-width: 52px
+  width: $coverWidth
+  min-width: $coverWidth
   display: flex
   justify-content: center
   align-items: center
@@ -27,11 +29,11 @@ cover-player()
 
   &__with
     height: 100%
-    width: 52px
+    width: $coverWidth
   
   &__without
-    height: 38px
-    width: 38px
+    height: 42px
+    width: 42px
     background-image: url('../icons/cover-whitout-dic.png')
     background-size: cover
 
@@ -51,9 +53,48 @@ cover-player()
         margin-bottom: 4px
         color: $colorWhite
   
-controls-player()
-  background-color: green
+control-player()
   height: 100%
   width: 100%
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  &--timer
+    color: $colorWhite
+    font-size: 1rem
+    text-align: left
+    width: 48px
+
+  &--time 
+    color: $colorWhite
+    font-size: 1rem
+    text-align: right 
+    width: 48px
+
+  &--central
+    width: 100%
+    height: 100%
+  
+  &--buttons
+    height: 40%
+    display: flex
+    justify-content: center
+
+  &--play
+    width: 22px
+    height: 22px
+    background-image: url('../icons/play-button.png')
+    background-size: cover
+    border-radius: 3px
+
+
+siri-wave()
+  background-color: $colorPink
+  width: 100%
+  height: 60%
+  display: flex
+  align-items: center
+  justify-content: center
 
 

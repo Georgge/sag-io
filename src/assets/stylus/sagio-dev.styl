@@ -8,6 +8,7 @@
   height: 100vh
   padding-left: $lateralPanelWidth
   box-sizing: border-box
+  position: relative
 
 .cover-container
   height: 397px
@@ -37,9 +38,10 @@
   background-color: $colorBG
   padding: $generalPadding
   min-height: 369px
-  height: 369px
   overflow-y: scroll
-  position: relative
+  position: absolute
+  top: 397px
+  bottom: 0
 
 .mini-cover
   mini-cover()
@@ -82,8 +84,11 @@
 .cover-player
   cover-player()
 
-.controls-player
-  controls-player()
+.control-player
+  control-player()
+
+.siri-wave
+  siri-wave()
 
 /* --- General classes --- */
 .spinner-container
