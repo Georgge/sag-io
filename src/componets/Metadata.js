@@ -71,3 +71,18 @@ export const CoverImage = (props) => {
     );
   }
 }
+
+export const CoverBackground = (props) => {
+  const { picture } = props;
+  if (!picture) {
+    return <img src="img/sagio-bg-cover.jpg" alt="" className="cover-bg" />
+  } else {
+    const metadata = picture[0];
+    const imageBuffer = metadata.data;
+    const { format } = metadata;
+    const bufferTo64 = new Buffer(imageBuffer.toString('base64'));
+    return <img src={`data:${format};base64, ${bufferTo64}`}
+            alt=""
+            className="cover-bg" />
+  }
+}

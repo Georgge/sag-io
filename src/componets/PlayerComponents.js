@@ -20,7 +20,6 @@ export const CurrentCover = (props) => {
 
 export const CurrentCoverData = (props) => {
   const { soundTitle = 'No playing', soundArtist = '' } = props;
-  console.log(props);
   return (
     <div className="cover-player--data">
       <div>{soundTitle}</div>

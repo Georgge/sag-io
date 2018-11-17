@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { SagIoDB } from '../store/Nedb';
-import { CoverData, CoverImage } from '../componets/Metadata';
+import { CoverData,
+  CoverImage,
+  CoverBackground } from '../componets/Metadata';
 import { CONSTANTS } from '../config/Constants';
 
 const mm = window.require('music-metadata');
@@ -45,11 +47,13 @@ export default class Cover extends PureComponent {
   }
 
   render() {
+    const { picture } = this.state;
     return (
       <div className="cover-container">
+        <CoverBackground picture={picture} />
         <div className="cover">
           <div className="cover--image">
-            <CoverImage picture={this.state.picture} />
+            <CoverImage picture={picture} />
           </div>
         </div>
         <div className="cover-data">
