@@ -33,13 +33,15 @@ export default class Cover extends PureComponent {
           genre, comment,
           picture, currentKey: current
         });
+        this.props.setValues(picture, title, artist);
       });
     })
   }
 
   componentWillReceiveProps (props) {
-    if(props.current)
+    if(props.current && (this.state.currentKey !== props.current)) {
       this.upData(props.current);
+    }
   }
 
   render() {

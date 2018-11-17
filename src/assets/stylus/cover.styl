@@ -1,0 +1,65 @@
+cover()
+  width: 50%
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-wrap: wrap
+
+  &--image
+    width: 348px
+    height: 348px
+    background-color: $colorPink
+    border-radius: 3px
+    display: flex
+    justify-content: center
+    align-items: center
+
+    &__without
+      width: 268px
+      height: 268px
+      background-image: url('../icons/cover-whitout-dic.png')
+      background-size: cover
+
+    &__with
+      width: 348px
+      height: 348px
+      border-radius: 3px
+
+cover-data()
+  width: 50%
+  height: 348px
+
+  &--item
+    display: flex
+    margin-bottom: 14px
+
+    &:last-child
+      margin-bottom: 0
+
+  &--icon
+    width: 20px
+    height: 20px
+    padding-top: 4px
+    padding-bottom: 4px
+    padding-right: 10px
+    display: flex
+    justify-content: center
+    align-items: center
+    > img
+      width: 18px
+      height: 18px
+
+  &--value
+    height: 28px
+    line-height: 28px
+    padding-left: 10px
+    color: $colorWhite
+    font-size: 1.22rem
+    text-align: left
+
+  &__without
+    height: 348px
+    text-align: center
+    line-height: 348px
+    font-size: 2rem
+    color: $colorWhite

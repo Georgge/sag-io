@@ -1,14 +1,8 @@
+@import './config'
 @import './spinner'
-
-/* --- Variables --- */
-$lateralPanelWidth = 249px
-$minicoverSize = 128px
-$generalPadding = 20px
-$colorWhite = #e3e3e3
-$colorGrey = #5d5d5d
-$colorPink = #ff00cc
-$colorWine = #440045
-$colorBG = #070607
+@import './cover'
+@import './mini-cover'
+@import './sound-player'
 
 .main
   height: 100vh
@@ -25,69 +19,10 @@ $colorBG = #070607
   flex-wrap: wrap
 
 .cover
-  width: 50%
-  display: flex
-  justify-content: center
-  align-items: center
-  flex-wrap: wrap
-
-  &--image
-    width: 348px
-    height: 348px
-    background-color: $colorPink
-    border-radius: 3px
-    display: flex
-    justify-content: center
-    align-items: center
-
-    &__without
-      width: 268px
-      height: 268px
-      background-image: url('../icons/cover-whitout-dic.png')
-      background-size: cover
-    &__with
-      width: 348px
-      height: 348px
-      border-radius: 3px
+  cover()
 
 .cover-data
-    width: 50%
-    height: 348px
-
-    &--item
-      display: flex
-      margin-bottom: 14px
-
-      &:last-child
-        margin-bottom: 0
-    
-    &--icon
-      width: 20px
-      height: 20px
-      padding-top: 4px
-      padding-bottom: 4px
-      padding-right: 10px
-      display: flex
-      justify-content: center
-      align-items: center
-      > img
-        width: 18px
-        height: 18px
-
-    &--value
-      height: 28px
-      line-height: 28px
-      padding-left: 10px
-      color: $colorWhite
-      font-size: 1.22rem
-      text-align: left
-
-    &__without
-      height: 348px
-      text-align: center
-      line-height: 348px
-      font-size: 2rem
-      color: $colorWhite
+  cover-data()
 
 
 .files-container
@@ -103,46 +38,7 @@ $colorBG = #070607
   position: relative
 
 .mini-cover
-  width: $minicoverSize
-  height: 188px
-  margin: 4px
-
-  &--image
-    background-color: $colorPink
-    width: $minicoverSize
-    height: $minicoverSize
-    display: flex
-    justify-content: center
-    align-items: center
-    border-radius: 3px
-    cursor: pointer
-    
-    &__with
-      width: $minicoverSize
-      height: $minicoverSize
-      border-radius: 3px
-    &__without
-      width: 96px
-      height: 96px
-      background-image: url('../icons/cover-whitout-dic.png')
-      background-position: center
-      background-size: cover
-
-  &--tags
-    width: $minicoverSize
-    height: auto
-    padding-top: 4px
-    padding-bottom: 4px
-    box-sizing: border-box
-    font-size: 0.75rem
-    text-align: left 
-    > p
-      margin-top: 4px
-      margin-bottom: 4px
-      color: $colorWhite
-
-      &:last-child
-        color: $colorGrey
+  mini-cover()
 
 .lateralPanel
   width: $lateralPanelWidth
@@ -175,6 +71,15 @@ $colorBG = #070607
   border-radius: 3px
   box-shadow: 1px 1px 15px $colorBG
   cursor: pointer
+
+.sound-player
+  sound-player()
+
+.cover-player
+  cover-player()
+
+.controls-player
+  controls-player()
 
 /* --- General classes --- */
 .spinner-container

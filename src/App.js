@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Main from './pages/Main';
 import { SagIoDB } from './store/Nedb';
 import {
@@ -12,7 +12,7 @@ import './assets/css/sagio.css'
 
 const { dialog } = window.require('electron').remote;
 
-class App extends Component {
+class App extends PureComponent {
   state = {
     directory: '',
   }

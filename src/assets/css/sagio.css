@@ -54,7 +54,6 @@
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
 }
-/* --- Variables --- */
 .main {
   height: 100vh;
   padding-left: 249px;
@@ -223,6 +222,64 @@
   border-radius: 3px;
   box-shadow: 1px 1px 15px #070607;
   cursor: pointer;
+}
+.sound-player {
+  height: 68px;
+  background-color: rgba(7,6,7,0.85);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #5d5d5d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-right: 20px;
+  padding-bottom: 8px;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+.cover-player {
+  background-color: #f0c;
+  height: 100%;
+  width: 52px;
+  min-width: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+}
+.cover-player__with {
+  height: 100%;
+  width: 52px;
+}
+.cover-player__without {
+  height: 38px;
+  width: 38px;
+  background-image: url("../icons/cover-whitout-dic.png");
+  background-size: cover;
+}
+.cover-player--data {
+  height: 100%;
+  width: 250px;
+  margin-right: 20px;
+  font-size: 0.7rem;
+  padding-top: 4px;
+  box-sizing: border-box;
+}
+.cover-player--data >div {
+  text-align: left;
+  color: #5d5d5d;
+}
+.cover-player--data >div:first-child {
+  margin-bottom: 4px;
+  color: #e3e3e3;
+}
+.controls-player {
+  background-color: #008000;
+  height: 100%;
+  width: 100%;
 }
 /* --- General classes --- */
 .spinner-container {

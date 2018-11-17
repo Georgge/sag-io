@@ -1,0 +1,41 @@
+mini-cover()
+  width: $minicoverSize
+  height: 188px
+  margin: 4px
+
+  &--image
+    background-color: $colorPink
+    width: $minicoverSize
+    height: $minicoverSize
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 3px
+    cursor: pointer
+    
+    &__with
+      width: $minicoverSize
+      height: $minicoverSize
+      border-radius: 3px
+    &__without
+      width: 96px
+      height: 96px
+      background-image: url('../icons/cover-whitout-dic.png')
+      background-position: center
+      background-size: cover
+
+  &--tags
+    width: $minicoverSize
+    height: auto
+    padding-top: 4px
+    padding-bottom: 4px
+    box-sizing: border-box
+    font-size: 0.75rem
+    text-align: left 
+    > p
+      margin-top: 4px
+      margin-bottom: 4px
+      color: $colorWhite
+
+      &:last-child
+        color: $colorGrey
