@@ -11,6 +11,9 @@ export default class Main extends PureComponent {
     picture: false,
     title: '',
     artist: '',
+    path: '',
+    file: '',
+    format: '',
     spinner: false,
   }
 
@@ -25,12 +28,16 @@ export default class Main extends PureComponent {
     this.setState({ currentFile: fileKey });
   }
 
-  setValues = (picture, title, artist) => {
+  setValues = (picture, title, artist, path, file, format) => {
     this.setState({
       picture,
       title,
       artist,
+      path,
+      file,
+      format,
     })
+    this.spinner();
   }
 
   render() {
@@ -47,7 +54,7 @@ export default class Main extends PureComponent {
           directory={this.props.directory}
           handleCurrent={this._handleCurrent}
           spinner={this.spinner} />
-        <SoundPlayer current={data} soundData={data} />
+        <SoundPlayer soundData={data} spinner={this.spinner} />
       </div>
     )
   }

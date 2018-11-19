@@ -24,6 +24,7 @@ export default class Cover extends PureComponent {
       const data = doc[current];
       mm.parseFile(`${data.path}/${data.file}`).then(metadata => {
         const { common } = metadata;
+        const { format: { dataformat } } = metadata;
         const {
           title = data.file,
           artist = '', album = '',
@@ -33,9 +34,9 @@ export default class Cover extends PureComponent {
           title, artist,
           album, year,
           genre, comment,
-          picture, currentKey: current
+          picture, currentKey: current,
         });
-        this.props.setValues(picture, title, artist);
+        this.props.setValues(picture, title, artist, data.path, data.file, dataformat);
       });
     })
   }

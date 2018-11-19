@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import Player from './Player';
 import {
   CurrentCover,
   CurrentCoverData, } from './PlayerComponents';
@@ -9,20 +10,30 @@ export default class SoundPlayer extends PureComponent {
     picture: false,
     title: '',
     artist: '',
+    path: '',
+    file: '',
   }
 
   soundState = (soundData) => {
-    const { currentFile, picture, title, artist } = soundData;
+    const { currentFile, picture,
+      title, artist,
+      path, file, format } = soundData;
+
     this.setState({ 
       currentKey: currentFile,
       picture,
       title,
       artist,
-    });
+      path,
+      file,
+      format,
+    })
   }
 
   componentWillReceiveProps (props) {
-    if (props.current && (this.state.currentKey !== props.current)) {
+    const { currentFile } = props.soundData;
+
+    if (currentFile) {
       const { soundData } = props;
       this.soundState(soundData);
     }
@@ -45,7 +56,14 @@ export default class SoundPlayer extends PureComponent {
             <div className="control-player--buttons">
               <div className="control-player--play" id="ppp"></div>
             </div>
-            <div className="siri-wave">SiriWave</div>
+            <div className="siri-wave">
+              <Player
+                path={this.state.path}
+                file={this.state.file}
+                play={this.state.currentKey ? true : false}
+                format={this.state.format}
+                spinner={this.props.spinner} />
+            </div>
           </div>
           <div className="control-player--time">2:35</div>
         </div>
