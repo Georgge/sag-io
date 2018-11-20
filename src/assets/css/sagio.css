@@ -56,6 +56,7 @@
 }
 .main {
   height: 100vh;
+  min-width: 1024px;
   padding-left: 249px;
   box-sizing: border-box;
   position: relative;
@@ -323,13 +324,29 @@
   background-size: cover;
   border-radius: 3px;
 }
+.control-player--pause {
+  width: 22px;
+  height: 22px;
+  background-image: url("../icons/play-button.png");
+  background-size: cover;
+  border-radius: 3px;
+  cursor: pointer;
+}
 .siri-wave {
-  background-color: #f0c;
   width: 100%;
   height: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: nowrap;
+  position: relative;
+}
+.siri-wave--line {
+  width: 597px;
+  height: 2px;
+  background-color: rgba(255,255,255,0.3);
+  position: absolute;
+  top: 10px;
 }
 /* --- General classes --- */
 .spinner-container {

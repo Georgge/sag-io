@@ -51,21 +51,12 @@ export default class SoundPlayer extends PureComponent {
           soundTitle={this.state.title}
           soundArtist={this.state.artist} />
         <div className="control-player">
-          <div className="control-player--timer">0:00</div>
-          <div className="control-player--central">
-            <div className="control-player--buttons">
-              <div className="control-player--play" id="ppp"></div>
-            </div>
-            <div className="siri-wave">
-              <Player
-                path={this.state.path}
-                file={this.state.file}
-                play={this.state.currentKey ? true : false}
-                format={this.state.format}
-                spinner={this.props.spinner} />
-            </div>
-          </div>
-          <div className="control-player--time">2:35</div>
+          <Player
+            path={this.state.path}
+            file={this.state.file}
+            play={this.state.currentKey ? true : false}
+            format={this.state.format}
+            spinner={this.props.spinner} />
         </div>
       </div>
     )
