@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import SiriWave from 'siriwave';
 import Player from './Player';
 import {
   CurrentCover,
@@ -12,6 +13,8 @@ export default class SoundPlayer extends PureComponent {
     artist: '',
     path: '',
     file: '',
+    siriWave: null,
+    playing: false,
   }
 
   soundState = (soundData) => {
@@ -30,6 +33,16 @@ export default class SoundPlayer extends PureComponent {
     })
   }
 
+  handlePlay = (playing) => {
+    console.log(playing);
+    this.setState({ playing, })
+    if (playing && this.state.siriWave !== null) {
+      this.state.siriWave.start();
+    } else if (!playing && this.state.siriWave !== null) {
+      this.state.siriWave.stop();
+    }
+  }
+
   componentWillReceiveProps (props) {
     const { currentFile } = props.soundData;
 
@@ -37,6 +50,18 @@ export default class SoundPlayer extends PureComponent {
       const { soundData } = props;
       this.soundState(soundData);
     }
+  }
+
+  componentDidMount () {
+    console.log(this.state.playing);
+    this.setState({
+      siriWave: new SiriWave({
+        container: document.getElementById('siriwave'),
+        width: 600,
+        height: 34,
+        color: '#ff00cc',
+      })
+    })
   }
 
   render() {
@@ -56,8 +81,13 @@ export default class SoundPlayer extends PureComponent {
             file={this.state.file}
             play={this.state.currentKey ? true : false}
             format={this.state.format}
-            spinner={this.props.spinner} />
+            spinner={this.props.spinner}
+            hplay={this.handlePlay} />
+          <div className="siri-wave" id="siriwave">
+            <div className="siri-wave--line"></div>
+          </div>
         </div>
+        
       </div>
     )
   }

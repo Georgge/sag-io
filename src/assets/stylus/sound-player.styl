@@ -59,6 +59,7 @@ control-player()
   display: flex
   justify-content: space-between
   align-items: center
+  position: relative
 
   &--timer
     color: $colorWhite
@@ -104,7 +105,11 @@ siri-wave()
   align-items: center
   justify-content: center
   flex-wrap: nowrap
-  position: relative
+  position: absolute
+  top: 25px
+  right: 0
+  bottom: 0
+  left: 0
 
   &--line
     width: 597px

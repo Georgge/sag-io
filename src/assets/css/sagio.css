@@ -147,6 +147,11 @@
   width: 100%;
   z-index: -1;
 }
+.buttons-edit {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
 .files-container {
   display: flex;
   flex-wrap: wrap;
@@ -295,6 +300,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .control-player--timer {
   color: #e3e3e3;
@@ -339,7 +345,11 @@
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
-  position: relative;
+  position: absolute;
+  top: 25px;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 .siri-wave--line {
   width: 597px;

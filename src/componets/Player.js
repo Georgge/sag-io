@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import ReactHowler from 'react-howler';
-import SiriWave from 'siriwave';
 import raf from 'raf';
 
 const fs = window.require('fs');
@@ -16,7 +15,6 @@ export default class Player extends PureComponent {
       format: '',
       duration: '00:00',
       seek: '00:00',
-      siriWave: null,
       playing: false,
       loaded: false,
     }
@@ -35,13 +33,8 @@ export default class Player extends PureComponent {
   }
 
   handleToggle () {
-    this.setState({ playing: !this.state.playing }, () => {
-      if (this.state.playing) {
-        this.state.siriWave.start();
-      } else {
-        this.state.siriWave.stop();
-      }
-    });
+    this.setState({ playing: !this.state.playing });
+    this.props.hplay(!this.state.playing);
   }
 
   handleOnLoad () {
@@ -49,23 +42,25 @@ export default class Player extends PureComponent {
     this.setDuration(this.player.duration())
     this.props.spinner();
     this.handleOnPlay();
+    this.props.hplay(true);
   }
 
   handleOnPlay = () => {
     this.setState({playing: true});
+    this.props.hplay(true);
     this.renderSeekPos();
-    this.state.siriWave.start();
   }
 
   handleOnEnd () {
-    this.state({ playing: false });
+    this.setState({ playing: false });
+    this.props.hplay(false);
     this.clearRAF();
-    this.state.siriWave.stop();
   }
 
   handleStop () {
     this.player.stop();
     this.setState({ playing: false });
+    this.props.hplay(false);
 
   }
 
@@ -99,20 +94,8 @@ export default class Player extends PureComponent {
           path,
           format,
         })
-        this.state.siriWave.stop();
       });
     }
-  }
-
-  componentDidMount () {
-    this.setState({
-      siriWave: new SiriWave({
-        container: document.getElementById('siriwave'),
-        width: 600,
-        height: 34,
-        color: '#ff00cc',
-      })
-    })
   }
 
   render() {
@@ -139,9 +122,6 @@ export default class Player extends PureComponent {
               onClick={this.handleToggle}
               id="ppp">
             </div>
-          </div>
-          <div className="siri-wave" id="siriwave">
-          <div className="siri-wave--line"></div>
           </div>
         </div>
         <div className="control-player--time">{this.state.duration}</div>

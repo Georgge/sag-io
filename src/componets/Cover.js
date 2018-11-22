@@ -58,6 +58,7 @@ export default class Cover extends PureComponent {
           </div>
         </div>
         <div className="cover-data">
+          <div className="buttons-edit">btn</div>
           <CoverData state={this.state} />
         </div>
       </div>
