@@ -30,7 +30,10 @@ const dataItem = (type, value) => {
         <img src={`img/${type}-icon.png`} alt={value} />
       </div>
       <div className="cover-data--value">
-        {value}
+        <input
+          className="cover-data--input"
+          type="text"
+          value={value} />
       </div>
     </div>
   );
