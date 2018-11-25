@@ -168,6 +168,36 @@
   display: flex;
   justify-content: flex-end;
 }
+.buttons-edit--btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 3px;
+  background-color: #f0c;
+  position: relative;
+}
+.buttons-edit--btn:last-child {
+  margin-left: 12px;
+}
+.buttons-edit--btn:last-child:after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  background-image: url("../icons/edit.png");
+  background-size: cover;
+}
+.buttons-edit--btn:first-child:after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  background-image: url("../icons/magic.png");
+  background-size: cover;
+}
 .files-container {
   display: flex;
   flex-wrap: wrap;

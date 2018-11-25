@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { SagIoDB } from '../store/Nedb';
-import { CoverData,
-  CoverImage,
+import CoverData from '../componets/CoverData'
+import { CoverImage,
   CoverBackground } from '../componets/Metadata';
 import { CONSTANTS } from '../config/Constants';
 
@@ -58,8 +58,7 @@ export default class Cover extends PureComponent {
           </div>
         </div>
         <div className="cover-data">
-          <div className="buttons-edit">btn</div>
-          <CoverData state={this.state} />
+          <CoverData data={this.state} />
         </div>
       </div>
     )

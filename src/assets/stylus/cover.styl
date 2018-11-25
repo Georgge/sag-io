@@ -93,3 +93,35 @@ buttons-edit()
   width: 100%
   display: flex
   justify-content: flex-end
+
+  &--btn
+    width: 28px
+    height: 28px
+    border-radius: 3px
+    background-color: $colorPink
+    position: relative
+
+    &:last-child
+      margin-left: 12px
+
+      &:after
+        content: ''
+        position: absolute
+        top: 4px
+        right: 4px
+        bottom: 4px
+        left: 4px
+        background-image: url('../icons/edit.png')
+        background-size: cover
+
+    &:first-child
+      &:after
+        content: ''
+        position: absolute
+        top: 4px
+        right: 4px
+        bottom: 4px
+        left: 4px
+        background-image: url('../icons/magic.png')
+        background-size: cover
+
