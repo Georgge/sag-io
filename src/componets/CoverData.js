@@ -14,10 +14,11 @@ export default class CoverData extends PureComponent {
   handleChange = (event) => {
     const id = event.target.id; 
     const value = event.target.value;
-    const { editable } = this.state.editable;
+    const { editable } = this.state;
 
     switch (id) {
       case 'title':
+        console.log(this.state.editable);
         if (editable) {
           this.setState({ title: value });
         }
@@ -52,6 +53,10 @@ export default class CoverData extends PureComponent {
     }
   }
 
+  handleEdit = () => {
+    this.setState({ editable: true });
+  }
+
   componentWillReceiveProps (props) {
     const { data } = props;
     this.setState({
@@ -69,7 +74,10 @@ export default class CoverData extends PureComponent {
       <div>
         <div className="buttons-edit">
           <div className="buttons-edit--btn"></div>
-          <div className="buttons-edit--btn"></div>
+          <div
+            className="buttons-edit--btn"
+            onClick={this.handleEdit} >
+          </div>
         </div>
         <form>
           <div className="cover-data--item">
