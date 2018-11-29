@@ -74,6 +74,7 @@ export default class CoverData extends PureComponent {
       <div>
         <div className="buttons-edit">
           <div className="buttons-edit--btn"></div>
+          <div className="buttons-save"></div>
           <div
             className="buttons-edit--btn"
             onClick={this.handleEdit} >
